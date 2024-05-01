@@ -9,6 +9,14 @@ const getAll = () => {
     })
 }
 
+const get = (id) => {
+    const request = axios.get(`${baseUrl}/${id}`)
+    return request.then(response=>response.data)
+    .catch(exception => {
+        console.log(`Error in getting book with: ${id} id from ${baseUrl}`)
+    })
+}
+
 const create = newBook => {
     const request = axios.post(baseUrl, )
       return request.then(response=>{response.data})
