@@ -53,14 +53,21 @@ function App() {
     }).catch(error=> console.log("Error using bookservice getall: ", error))
   }
 
+  const get = (id) => {
+    bookService.get(id)
+    .then(bookResponse =>{
+      setCart(cart.concat(bookResponse))
+    })
+  }
+
   // make use of localstorage/cookies etc to persist through a refresh/browser close.
   const addCartButtonHandler = id => {
-    setCart(cart.concat(id))
+    get(id)
   }
 
   // empty list because we just want this to display once.
   useEffect(getAll, [])
-
+  
   console.log(books)
 
   return (
