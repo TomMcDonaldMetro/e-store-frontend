@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import bookService from './services/books'
 import StoreHeader from './components/navbar'
 import Book from './components/book'
+
 import './App.css'
 
 // because Spring JPA doesn't supply an id outside of the DB unless we specifically add it.
@@ -42,7 +43,7 @@ function App() {
   const navButtonHandler = event => {
     event.preventDefault()
     const booklist = books.filter(book=>book.title.includes(search))
-
+    console.log(booklist)
   }
 
   // get all books from rest api to set a books state variable
@@ -53,6 +54,7 @@ function App() {
     }).catch(error=> console.log("Error using bookservice getall: ", error))
   }
 
+  // 
   const get = (id) => {
     bookService.get(id)
     .then(bookResponse =>{

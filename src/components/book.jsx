@@ -6,6 +6,8 @@ const Book = ({book, handler}) => {
    const baseUrl = 'http://localhost:8080/images/'
    const imgTitle = book.title.replace(/\s/g, '').toLowerCase();
 
+   console.log(book)
+
    return (
     <Card bg="secondary" style={{ width: '18rem' }}>
       <Card.Img variant="top" src={`${baseUrl}${imgTitle}.png`} alt="book_image"/>

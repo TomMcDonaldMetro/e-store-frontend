@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import ShoppingCart from '../components/cart'
+import ShoppingCartButton from './cartbutton'
 
 const StoreHeader = ({inputHandler, buttonHandler, cart}) => {
 
@@ -50,7 +50,7 @@ const StoreHeader = ({inputHandler, buttonHandler, cart}) => {
 			  	<Button variant="dark" onClick={() => console.log("button currently just for show")}>Sign In</Button>
          	 </Navbar.Text>
 			 <Navbar.Text>
-			 <ShoppingCart cart={cart}/>
+			 <ShoppingCartButton cart={cart}/>
 			 </Navbar.Text>
 			</Navbar.Collapse>
 			

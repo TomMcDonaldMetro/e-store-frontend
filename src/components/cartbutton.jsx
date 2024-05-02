@@ -1,6 +1,6 @@
 import {Cart} from 'react-bootstrap-icons'
 
-const ShoppingCart = (props) =>{
+const ShoppingCartButton = (props) =>{
     console.log(props)
   return (
     <>
@@ -14,4 +14,4 @@ const ShoppingCart = (props) =>{
   );
 }
 
-export default ShoppingCart;
+export default ShoppingCartButton;
