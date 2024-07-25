@@ -1,0 +1,152 @@
+{
+    "books": [
+        {
+        "id":"1",
+        "manufacturer": "Penguin",
+        "price": 10.99,
+        "isbn": 9780140817744,
+        "author": {
+        "firstName": "George",
+        "lastName": "Orwell"
+        },
+        "title": "1984",
+        "genre": "Dystopian Fiction",
+        "description": "A novel following a character living in a dystopian future.",
+        "_links": {
+        "self": {
+        "href": "http://localhost:8080/api/books/1"
+        },
+        "book": {
+        "href": "http://localhost:8080/api/books/1"
+        }
+        }
+        },
+        {
+        "id":"7",
+        "manufacturer": "Penguin",
+        "price": 9,
+        "isbn": 9780141439518,
+        "author": {
+        "firstName": "Jane",
+        "lastName": "Austen"
+        },
+        "title": "Pride and Prejudice",
+        "genre": "Romance",
+        "description": "The quintessential romantic comedy from the queen of mannerly stories of love and unlove. It's the timeless tale of Bennett and Darcy, the love that was always and never meant to be.",
+        "_links": {
+        "self": {
+        "href": "http://localhost:8080/api/books/7"
+        },
+        "book": {
+        "href": "http://localhost:8080/api/books/7"
+        }
+        }
+        },
+        {
+        "id":"8",
+        "manufacturer": "Penguin",
+        "price": 9.99,
+        "isbn": 9780141439563,
+        "author": {
+        "firstName": "Charles",
+        "lastName": "Dickens"
+        },
+        "title": "Great Expectations",
+        "genre": "Bildungsroman",
+        "description": "Charles Dickens's Great Expectations charts the course of orphan Pip Pirrip's life as it is transformed by a vast, mysterious inheritance.",
+        "_links": {
+        "self": {
+        "href": "http://localhost:8080/api/books/8"
+        },
+        "book": {
+        "href": "http://localhost:8080/api/books/8"
+        }
+        }
+        },
+        {
+        "id":"9",
+        "manufacturer": "Penguin",
+        "price": 12.49,
+        "isbn": 9780141180977,
+        "author": {
+        "firstName": "Arthur",
+        "lastName": "Miller"
+        },
+        "title": "Death of a Salesman",
+        "genre": "Tragedy",
+        "description": "Willy Loman, the protagonist of Death of a Salesman, has spent his life following the American way, living out his belief in salesmanship as a way to reinvent himself. But somehow the riches and respect he covets have eluded him.",
+        "_links": {
+        "self": {
+        "href": "http://localhost:8080/api/books/9"
+        },
+        "book": {
+        "href": "http://localhost:8080/api/books/9"
+        }
+        }
+        },
+        {
+        "id":"10",
+        "manufacturer": "Knopf Doubleday Publishing Group",
+        "price": 17,
+        "isbn": 9780345806789,
+        "author": {
+        "firstName": "Stephen",
+        "lastName": "King"
+        },
+        "title": "The Shining",
+        "genre": "Horror",
+        "description": "Memory, attention span and emotions will be thrown into turmoil as you read one of King’s best. Is this what you want? Yes, it most certainly is what you want.",
+        "_links": {
+        "self": {
+        "href": "http://localhost:8080/api/books/10"
+        },
+        "book": {
+        "href": "http://localhost:8080/api/books/10"
+        }
+        }
+        },
+        {
+        "id":"11",
+        "manufacturer": "Random House Worlds",
+        "price": 15.99,
+        "isbn": 9780307346612,
+        "author": {
+        "firstName": "Max",
+        "lastName": "Brooks"
+        },
+        "title": "World War Z",
+        "genre": "Horror",
+        "description": "We survived the zombie apocalypse, but how many of us are still haunted by that terrible time? We have (temporarily?) defeated the living dead, but at what cost? ",
+        "_links": {
+        "self": {
+        "href": "http://localhost:8080/api/books/11"
+        },
+        "book": {
+        "href": "http://localhost:8080/api/books/11"
+        }
+        }
+        },
+        {
+        "id":"13",
+        "manufacturer": "barnes",
+        "price": 15.99,
+        "isbn": 9781435159648,
+        "author": {
+        "firstName": "Mark",
+        "lastName": "Twain"
+        },
+        "title": "Adventures of Huckleberry Finn",
+        "genre": "American Fiction",
+        "description": "Two characters run away to live a vagabond life rafting down the Mississippi River.",
+        "_links": {
+        "self": {
+        "href": "http://localhost:8080/api/books/13"
+        },
+        "book": {
+        "href": "http://localhost:8080/api/books/13"
+        }
+        }
+        }
+    ]
+}
+    
