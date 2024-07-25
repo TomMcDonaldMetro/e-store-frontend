@@ -2,29 +2,13 @@ import { useEffect, useState } from 'react'
 import bookService from './services/books'
 import StoreHeader from './components/navbar'
 import Book from './components/book'
-
+import { isProduction } from './utils/urls' 
 import './App.css'
-
-// because Spring JPA doesn't supply an id outside of the DB unless we specifically add it.
-// we get our ID from a different way.
-const dissectId = href => {
-  const id = href.split("/")
-  return id[id.length - 1]
-}
-
-const Books = ({books, handler}) => {
-  // books list goes here
-  const booksArr = books;
-  return (
-    <div id='books'>
-
-    {booksArr.map(book=>
-      <Book key={book.title} book={book} handler={()=>handler(dissectId(book._links.self.href))}/> 
-    )}
-    </div>
-  )
-
-}
+import {Routes, Route, Link} from 'react-router-dom'
+import Storefront from './components/storefront'
+import OrderSummary from './components/ordersummary'
+import ShoppingCart from './components/shoppingcart'
+import Checkout from './components/checkout'
 
 function App() {
   const [books, setBooks] = useState([
@@ -46,41 +30,37 @@ function App() {
     console.log(booklist)
   }
 
-  // get all books from rest api to set a books state variable
-  const getAll = () => {
-    bookService.getAll()
-    .then(booksResponse=>{
-      setBooks(booksResponse._embedded.books)
-    }).catch(error=> console.log("Error using bookservice getall: ", error))
-  }
 
-  // 
-  const get = (id) => {
+  // make use of localstorage/cookies etc to persist through a refresh/browser close.
+  const addCartButtonHandler = id => {
     bookService.get(id)
     .then(bookResponse =>{
       setCart(cart.concat(bookResponse))
     })
-  }
-
-  // make use of localstorage/cookies etc to persist through a refresh/browser close.
-  const addCartButtonHandler = id => {
-    get(id)
+    console.log(cart)
   }
 
   // empty list because we just want this to display once.
-  useEffect(getAll, [])
-  
+  useEffect(()=>{
+    bookService.getAll()
+      .then(booksResponse=>{
+        if( isProduction ) setBooks(booksResponse._embedded.books) 
+          setBooks(booksResponse)
+      }).catch(error=> console.log("Error using bookservice getall: ", error))
+}, [])
+
   console.log(books)
 
   return (
    <div>
-    <StoreHeader inputHandler={navSearchHandler} buttonHandler={navButtonHandler} cart={cart}/>
-    <div id='content'>
-      <h1>Hello, World</h1>
-      <h2>Let's create a book store front page...</h2>
-      {<Books books={books} handler={addCartButtonHandler}/>}
-    </div>
-   </div>
+      <StoreHeader inputHandler={navSearchHandler} buttonHandler={navButtonHandler} cart={cart}/>
+    
+    <Routes>
+      <Route path='/' element={<Storefront addCartButtonHandler={addCartButtonHandler} books={books} />} />
+      <Route path='/checkout' element={<Checkout cart={cart}/>} />
+
+    </Routes>
+       </div>
   )
 }
 

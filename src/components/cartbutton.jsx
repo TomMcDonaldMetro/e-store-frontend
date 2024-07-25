@@ -1,16 +1,18 @@
 import {Cart} from 'react-bootstrap-icons'
+import { Link } from 'react-router-dom';
+
+
 
 const ShoppingCartButton = (props) =>{
-    console.log(props)
   return (
-    <>
-    <a href={'#'}onClick={()=>{console.log("clicked the cart button")}}>
-    <Cart   />
-  <span className="badge text-bg-danger">
-    {props.cart.length}
-  </span>
-  </a>
-    </>
+    
+    <div>
+      <Cart   />
+      <span className="badge text-bg-danger">
+        {props.cart.length}
+      </span>
+    </div>
+    
   );
 }
 

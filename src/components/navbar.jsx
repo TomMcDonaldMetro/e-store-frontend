@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import ShoppingCartButton from './cartbutton'
+import { Link } from 'react-router-dom';
 
 const StoreHeader = ({inputHandler, buttonHandler, cart}) => {
 
@@ -12,7 +13,7 @@ const StoreHeader = ({inputHandler, buttonHandler, cart}) => {
     return (
 		<Navbar expand="lg" className="bg-body-tertiary" fixed="top" data-bs-theme="dark">
 		  <Container fluid>
-			<Navbar.Brand href="#">E-Store</Navbar.Brand>
+			<Navbar.Brand as={Link} to="/">E-Store</Navbar.Brand>
 			<Navbar.Toggle aria-controls="navbarScroll" />
 			<Navbar.Collapse id="navbarScroll">
 			  <Nav
@@ -20,8 +21,8 @@ const StoreHeader = ({inputHandler, buttonHandler, cart}) => {
 				style={{ maxHeight: '100px' }}
 				navbarScroll
 			  >
-				<Nav.Link href="#action1">Home</Nav.Link>
-				<Nav.Link href="#action2">Link</Nav.Link>
+				<Nav.Link as={Link} to="/">Home</Nav.Link>
+				<Nav.Link as={Link} to="/link">Link</Nav.Link>
 				<NavDropdown title="Link" id="navbarScrollingDropdown">
 				  <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
 				  <NavDropdown.Item href="#action4">
@@ -50,7 +51,7 @@ const StoreHeader = ({inputHandler, buttonHandler, cart}) => {
 			  	<Button variant="dark" onClick={() => console.log("button currently just for show")}>Sign In</Button>
          	 </Navbar.Text>
 			 <Navbar.Text>
-			 <ShoppingCartButton cart={cart}/>
+			 	<Link to='/checkout'><ShoppingCartButton cart={cart}/></Link>
 			 </Navbar.Text>
 			</Navbar.Collapse>
 			
