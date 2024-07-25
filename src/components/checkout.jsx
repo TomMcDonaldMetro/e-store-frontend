@@ -1,13 +1,13 @@
 import OrderSummary from "./ordersummary"
 import ShoppingCart from "./shoppingcart"
 
-const Checkout = ({cart}) => {
+const Checkout = ({cart, removeHandler}) => {
 
 
     return (
         <>
-            <ShoppingCart cart={cart} />
-            <OrderSummary />
+            <ShoppingCart cart={cart} removeHandler={removeHandler}/>
+            <OrderSummary cart={cart}/>
         </>
     )
 }

@@ -1,9 +1,12 @@
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
-const OrderSummary = () => {
+const OrderSummary = ({cart}) => {
 
-    const cart = [15.99, 13.99]
+    // handles the crash but needs implemented logic for blocking the cart if theres no order.
+    if(cart.length === 0) return;
+    
+    cart = cart.map(product => product.price)
     const price = cart.reduce((accumulator, current)=> accumulator + current)
     const shipping = 5.99
     const tax = 0.00;

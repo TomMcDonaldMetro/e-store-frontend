@@ -1,7 +1,7 @@
 import Book from "./book"
 
 const Storefront = (props) => {
-console.log(props)
+    
 // because Spring JPA doesn't supply an id outside of the DB unless we specifically add it.
 // we get our ID from a different way.
 const dissectId = href => {
@@ -16,7 +16,7 @@ const dissectId = href => {
       <div id='books'>
   
       {booksArr.map(book=>
-        <Book key={book.title} book={book} handler={()=>handler(dissectId(book._links.self.href))}/> 
+        <Book key={book.title} book={book} handler={()=>handler(dissectId(book._links.self.href))} message={'add to cart'}/> 
       )}
       </div>
     )

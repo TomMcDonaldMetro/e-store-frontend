@@ -1,34 +1,16 @@
 import { useEffect, useState } from 'react'
 import bookService from './services/books'
 import StoreHeader from './components/navbar'
-import Book from './components/book'
 import { isProduction } from './utils/urls' 
 import './App.css'
 import {Routes, Route, Link} from 'react-router-dom'
 import Storefront from './components/storefront'
-import OrderSummary from './components/ordersummary'
-import ShoppingCart from './components/shoppingcart'
 import Checkout from './components/checkout'
+import SigninForm from './components/signinForm'
 
 function App() {
-  const [books, setBooks] = useState([
-    {title: "1984"}, {title: "19"}, {title: "84"}
-  ])
+  const [books, setBooks] = useState([])
   const [cart, setCart] = useState([])
-  const [search, setSearch] = useState('')
-
-  // set a search state variable by the nav bar search input
-  const navSearchHandler = (event) => {
-    setSearch(event.target.value)
-  }
-
-  // search by title using includes
-  // returns a filtered list of books to display
-  const navButtonHandler = event => {
-    event.preventDefault()
-    const booklist = books.filter(book=>book.title.includes(search))
-    console.log(booklist)
-  }
 
 
   // make use of localstorage/cookies etc to persist through a refresh/browser close.
@@ -37,6 +19,11 @@ function App() {
     .then(bookResponse =>{
       setCart(cart.concat(bookResponse))
     })
+  }
+
+  const removeHandler = id => {
+    console.log('id',id)
+    setCart(cart.filter(item => item.id !== id))
     console.log(cart)
   }
 
@@ -49,16 +36,15 @@ function App() {
       }).catch(error=> console.log("Error using bookservice getall: ", error))
 }, [])
 
-  console.log(books)
 
   return (
    <div>
-      <StoreHeader inputHandler={navSearchHandler} buttonHandler={navButtonHandler} cart={cart}/>
+      <StoreHeader cart={cart} books={books}/>
     
     <Routes>
       <Route path='/' element={<Storefront addCartButtonHandler={addCartButtonHandler} books={books} />} />
-      <Route path='/checkout' element={<Checkout cart={cart}/>} />
-
+      <Route path='/checkout' element={<Checkout cart={cart} removeHandler={removeHandler}/>} />
+      <Route path='/signin' element={<SigninForm />} />
     </Routes>
        </div>
   )

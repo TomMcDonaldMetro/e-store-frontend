@@ -6,8 +6,26 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import ShoppingCartButton from './cartbutton'
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
-const StoreHeader = ({inputHandler, buttonHandler, cart}) => {
+const StoreHeader = ({cart, books}) => {
+
+
+const [search, setSearch] = useState('')
+
+  // set a search state variable by the nav bar search input
+  const navSearchHandler = (event) => {
+    setSearch(event.target.value)
+  }
+
+  // search by title using includes
+  // returns a filtered list of books to display
+  const navButtonHandler = event => {
+    event.preventDefault()
+    const booklist = books.filter(book=>book.title.includes(search))
+	console.log(booklist)
+  }
+
 
 
     return (
@@ -43,12 +61,12 @@ const StoreHeader = ({inputHandler, buttonHandler, cart}) => {
 				  placeholder="Search"
 				  className="me-2"
 				  aria-label="Search"
-				  onChange={inputHandler}
+				  onChange={navSearchHandler}
 				/>
-				<Button variant="outline-success" onClick={buttonHandler}>Search</Button>
+				<Button variant="outline-success" onClick={navButtonHandler}>Search</Button>
 			  </Form>
 			  <Navbar.Text>
-			  	<Button variant="dark" onClick={() => console.log("button currently just for show")}>Sign In</Button>
+			  	<Link to='/signin'><Button variant="dark">Sign In</Button></Link>
          	 </Navbar.Text>
 			 <Navbar.Text>
 			 	<Link to='/checkout'><ShoppingCartButton cart={cart}/></Link>

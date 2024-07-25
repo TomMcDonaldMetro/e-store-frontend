@@ -3,7 +3,6 @@ import { websiteUrl } from '../utils/urls';
 
 const baseUrl =  websiteUrl || 'http://localhost:8080/api/books'
 
-console.log('websiteurl', websiteUrl)
 
 const getAll = () => {
     const request = axios.get(baseUrl);
@@ -22,14 +21,14 @@ const get = (id) => {
 }
 
 const create = newBook => {
-    const request = axios.post(baseUrl, )
+    const request = axios.post(baseUrl, newBook)
       return request.then(response=>{response.data})
       .catch(error =>{
         console.log("received an error from the server after attempting to post")
       })
 }
 
-const update = (id, newBook) => {
+const update = (id, newObject) => {
     console.log(`${baseUrl}/${id}`)
     console.log(newObject)
     const request = axios.put(`${baseUrl}/${id}`, newObject)
