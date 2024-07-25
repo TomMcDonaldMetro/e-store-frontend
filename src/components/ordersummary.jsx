@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-
+import { Link } from 'react-router-dom';
 const OrderSummary = ({cart}) => {
 
     // handles the crash but needs implemented logic for blocking the cart if theres no order.
@@ -22,7 +22,7 @@ const OrderSummary = ({cart}) => {
             <Card.Text>Estimated Shipping: ${shipping}</Card.Text>
             <Card.Text>Estimated Tax: ${tax}</Card.Text>
             <Card.Text>Order Total: ${total}</Card.Text>
-            <Button variant="secondary" onClick={()=> {console.log("checkout pressed")}}>Checkout</Button>
+            <Link to='/credentials'><Button variant="secondary" onClick={()=> {console.log("checkout pressed")}}>Checkout</Button></Link>
         </Card.Body>
     </Card>
     )

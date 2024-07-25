@@ -7,6 +7,7 @@ import {Routes, Route, Link} from 'react-router-dom'
 import Storefront from './components/storefront'
 import Checkout from './components/checkout'
 import SigninForm from './components/signinForm'
+import CredentialsScreen from './components/CredentialsScreen'
 
 function App() {
   const [books, setBooks] = useState([])
@@ -45,6 +46,8 @@ function App() {
       <Route path='/' element={<Storefront addCartButtonHandler={addCartButtonHandler} books={books} />} />
       <Route path='/checkout' element={<Checkout cart={cart} removeHandler={removeHandler}/>} />
       <Route path='/signin' element={<SigninForm />} />
+      <Route path='/credentials' element={<CredentialsScreen cart={cart}/>} />
+      <Route path='/books/:id' element={<Book books={books}/>} />
     </Routes>
        </div>
   )
