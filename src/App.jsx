@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
-import bookService from './services/books'
 import StoreHeader from './components/navbar'
-import { isProduction } from './utils/urls' 
 import './App.css'
 import {Routes, Route, Link, useMatch, useParams} from 'react-router-dom'
 import Storefront from './components/storefront'
@@ -17,10 +15,10 @@ function App() {
   const dispatch = useDispatch()
   useEffect(()=>{
     dispatch(initializeBooks())
-}, [])
+  }, [])
 
-const books = useSelector(state => state.books)
-const cart = useSelector(state => state.cart)
+  const books = useSelector(state => state.books)
+  const cart = useSelector(state => state.cart)
 
 
   const match = useMatch('/books/:id')
