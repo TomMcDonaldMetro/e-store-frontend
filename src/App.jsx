@@ -21,16 +21,14 @@ function App() {
   const cart = useSelector(state => state.cart)
 
 
-  const match = useMatch('/books/:id')
-  const book = match ? books.find(book=> book.id === match.params.id) : null
   
-
+ // add these into their own components so that we can cut back on the prop drilling.
   return (
    <div>
       <StoreHeader cart={cart} books={books}/>
     
       <Routes>
-        <Route path='/books/:id' element={<Single book={book}/>} />
+        <Route path='/books/:id' element={<Single />} />
         <Route path='/' element={<Storefront books={books} />} />
         <Route path='/checkout' element={<Checkout cart={cart}/>} />
         <Route path='/signin' element={<SigninForm />} />
