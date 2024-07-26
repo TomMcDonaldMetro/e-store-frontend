@@ -3,53 +3,42 @@ import bookService from './services/books'
 import StoreHeader from './components/navbar'
 import { isProduction } from './utils/urls' 
 import './App.css'
-import {Routes, Route, Link} from 'react-router-dom'
+import {Routes, Route, Link, useMatch, useParams} from 'react-router-dom'
 import Storefront from './components/storefront'
 import Checkout from './components/checkout'
 import SigninForm from './components/signinForm'
 import CredentialsScreen from './components/CredentialsScreen'
+import Single from './components/Single'
+import { useSelector, useDispatch } from 'react-redux'
+import { initializeBooks } from './reducers/bookReducer'
 
 function App() {
-  const [books, setBooks] = useState([])
-  const [cart, setCart] = useState([])
 
-
-  // make use of localstorage/cookies etc to persist through a refresh/browser close.
-  const addCartButtonHandler = id => {
-    bookService.get(id)
-    .then(bookResponse =>{
-      setCart(cart.concat(bookResponse))
-    })
-  }
-
-  const removeHandler = id => {
-    console.log('id',id)
-    setCart(cart.filter(item => item.id !== id))
-    console.log(cart)
-  }
-
-  // empty list because we just want this to display once.
+  const dispatch = useDispatch()
   useEffect(()=>{
-    bookService.getAll()
-      .then(booksResponse=>{
-        if( isProduction ) setBooks(booksResponse._embedded.books) 
-          setBooks(booksResponse)
-      }).catch(error=> console.log("Error using bookservice getall: ", error))
+    dispatch(initializeBooks())
 }, [])
 
+const books = useSelector(state => state.books)
+const cart = useSelector(state => state.cart)
+
+
+  const match = useMatch('/books/:id')
+  const book = match ? books.find(book=> book.id === match.params.id) : null
+  
 
   return (
    <div>
       <StoreHeader cart={cart} books={books}/>
     
-    <Routes>
-      <Route path='/' element={<Storefront addCartButtonHandler={addCartButtonHandler} books={books} />} />
-      <Route path='/checkout' element={<Checkout cart={cart} removeHandler={removeHandler}/>} />
-      <Route path='/signin' element={<SigninForm />} />
-      <Route path='/credentials' element={<CredentialsScreen cart={cart}/>} />
-      <Route path='/books/:id' element={<Book books={books}/>} />
-    </Routes>
-       </div>
+      <Routes>
+        <Route path='/books/:id' element={<Single book={book}/>} />
+        <Route path='/' element={<Storefront books={books} />} />
+        <Route path='/checkout' element={<Checkout cart={cart}/>} />
+        <Route path='/signin' element={<SigninForm />} />
+        <Route path='/credentials' element={<CredentialsScreen cart={cart}/>} />
+      </Routes>
+    </div>
   )
 }
 

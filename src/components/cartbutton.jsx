@@ -1,14 +1,18 @@
 import {Cart} from 'react-bootstrap-icons'
 
+import { useSelector } from 'react-redux';
 
 
-const ShoppingCartButton = (props) =>{
+const ShoppingCartButton = () =>{
+
+
+  const cart = useSelector(state => state.cart)
   return (
     
     <div>
       <Cart   />
       <span className="badge text-bg-danger">
-        {props.cart.length}
+        {cart.length}
       </span>
     </div>
     

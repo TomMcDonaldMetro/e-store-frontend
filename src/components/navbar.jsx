@@ -8,8 +8,8 @@ import ShoppingCartButton from './cartbutton'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-const StoreHeader = ({cart, books}) => {
 
+const StoreHeader = ({books}) => {
 
 const [search, setSearch] = useState('')
 
@@ -69,7 +69,7 @@ const [search, setSearch] = useState('')
 			  	<Link to='/signin'><Button variant="dark">Sign In</Button></Link>
          	 </Navbar.Text>
 			 <Navbar.Text>
-			 	<Link to='/checkout'><ShoppingCartButton cart={cart}/></Link>
+			 	<Link to='/checkout'><ShoppingCartButton/></Link>
 			 </Navbar.Text>
 			</Navbar.Collapse>
 			
