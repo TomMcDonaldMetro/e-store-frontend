@@ -7,12 +7,13 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import ShoppingCartButton from './cartbutton'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-
-const StoreHeader = ({books}) => {
+const StoreHeader = () => {
 
 const [search, setSearch] = useState('')
 
+  const books = useSelector(state => state.books)
   // set a search state variable by the nav bar search input
   const navSearchHandler = (event) => {
     setSearch(event.target.value)

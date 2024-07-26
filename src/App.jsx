@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import StoreHeader from './components/navbar'
 import './App.css'
-import {Routes, Route, Link, useMatch, useParams} from 'react-router-dom'
+import {Routes, Route} from 'react-router-dom'
 import Storefront from './components/storefront'
 import Checkout from './components/checkout'
 import SigninForm from './components/signinForm'
@@ -17,22 +17,19 @@ function App() {
     dispatch(initializeBooks())
   }, [])
 
-  const books = useSelector(state => state.books)
   const cart = useSelector(state => state.cart)
 
 
-  
- // add these into their own components so that we can cut back on the prop drilling.
-  return (
+    return (
    <div>
-      <StoreHeader cart={cart} books={books}/>
+      <StoreHeader cart={cart}/>
     
       <Routes>
         <Route path='/books/:id' element={<Single />} />
-        <Route path='/' element={<Storefront books={books} />} />
-        <Route path='/checkout' element={<Checkout cart={cart}/>} />
+        <Route path='/' element={<Storefront />} />
+        <Route path='/checkout' element={<Checkout />} />
         <Route path='/signin' element={<SigninForm />} />
-        <Route path='/credentials' element={<CredentialsScreen cart={cart}/>} />
+        <Route path='/credentials' element={<CredentialsScreen />} />
       </Routes>
     </div>
   )
