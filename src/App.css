@@ -65,3 +65,8 @@
 #content {
 	padding-top: 40px;
 }
+
+.view-container {
+  display: flex;
+  color: red;
+}
