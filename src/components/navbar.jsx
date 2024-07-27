@@ -8,10 +8,12 @@ import ShoppingCartButton from './cartbutton'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-
+import { useNavigate } from 'react-router-dom';
 const StoreHeader = () => {
 
 const [search, setSearch] = useState('')
+
+  const navigate = useNavigate()
 
   const books = useSelector(state => state.books)
   // set a search state variable by the nav bar search input
@@ -23,8 +25,18 @@ const [search, setSearch] = useState('')
   // returns a filtered list of books to display
   const navButtonHandler = event => {
     event.preventDefault()
-    const booklist = books.filter(book=>book.title.includes(search))
-	console.log(booklist)
+    const booklist = books.filter(book=>book.title.toLowerCase().includes(search))
+	console.log('booklist', booklist)
+	
+
+	if(booklist.length === 1){
+		navigate(`/books/${booklist[0].id}`);
+	}
+
+	else if(booklist.length > 1) {
+		// display a filter for this many
+		console.log("more than 1 available to view")
+	}
   }
 
 
