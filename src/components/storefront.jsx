@@ -1,9 +1,9 @@
 import Book from "./book"
-import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { addCart } from "../reducers/cartReducer"
 
 const Storefront = () => {
+
   const dispatch = useDispatch()
 
   const handleAddToCart = (book) => {
@@ -18,15 +18,36 @@ const dissectId = href => {
     return id[id.length - 1]
   }
   
+  // little sloppy we could probably clean this up
+  // as it stands, if we have a filter it will return a filtered list
+  // else if we don't it will return the entire list.
   const Books = () => {
     
     const books = useSelector(state => state.books)
+    const filter = useSelector(state => state.filter)
+    let filteredBooks = undefined
 
+    if(filter){
+      filteredBooks = books.filter(book => book.title.toLowerCase().includes(filter))
+      
+      // end early if we don't have any results
+      if(filteredBooks.length === 0){
+        return (
+          <div>
+            No results...
+          </div>
+        )
+      }
+    }
+
+    
 
     return (
       <div id='books'>
   
-      {books.map(book=>
+      {filteredBooks ? filteredBooks.map(book => <div key={book.id}>
+            <Book key={book.id} handler={()=>handleAddToCart(book)} book={book} message={'add to cart'}/> 
+          </div>) : books.map(book=>
           <div key={book.id}>
             <Book key={book.id} handler={()=>handleAddToCart(book)} book={book} message={'add to cart'}/> 
           </div>

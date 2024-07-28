@@ -19,7 +19,6 @@ function App() {
 
   const cart = useSelector(state => state.cart)
 
-
   // add a route for /authors/authorName - should reveal a listing of books by this author
   // <Route path='/author/:authorname element={<Storefront/>} /> with a filter in there somewhere.
     return (

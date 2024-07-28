@@ -8,11 +8,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import cartReducer from './reducers/cartReducer.js'
 import { Provider } from 'react-redux';
 import bookReducer from './reducers/bookReducer.js';
+import filterReducer from './reducers/filterReducer.js';
 
 const store = configureStore({
     reducer: {
         cart: cartReducer,
-        books: bookReducer
+        books: bookReducer,
+        filter: filterReducer
     }
 
 })

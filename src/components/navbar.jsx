@@ -7,11 +7,13 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import ShoppingCartButton from './cartbutton'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { removeFilter, setFilter } from '../reducers/filterReducer';
 const StoreHeader = () => {
 
 const [search, setSearch] = useState('')
+const dispatch = useDispatch()
 
   const navigate = useNavigate()
 
@@ -27,19 +29,15 @@ const [search, setSearch] = useState('')
     event.preventDefault()
     const booklist = books.filter(book=>book.title.toLowerCase().includes(search))
 	console.log('booklist', booklist)
-	
+	dispatch(setFilter(search))
 
+	// if the list is length 1 just show the page if we'd have clicked directly on it.
 	if(booklist.length === 1){
 		navigate(`/books/${booklist[0].id}`);
-	}
-
-	else if(booklist.length > 1) {
-		// display a filter for this many
-		console.log("more than 1 available to view")
-	}
+	}	
   }
 
-
+  
 
     return (
 		<Navbar expand="lg" className="bg-body-tertiary" fixed="top" data-bs-theme="dark">
