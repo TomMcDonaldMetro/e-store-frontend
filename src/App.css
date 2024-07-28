@@ -68,5 +68,9 @@
 
 .view-container {
   display: flex;
-  color: red;
+}
+/* harcoding images right now because they aren't all the same size */
+img {
+  height: 400px;
+  width: 80px;
 }

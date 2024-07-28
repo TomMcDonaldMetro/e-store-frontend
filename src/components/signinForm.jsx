@@ -11,7 +11,7 @@ const SigninForm = () => {
     console.log(email.value)
     console.log(pass.value)
     if(verify(email.value, pass.value)){
-      
+      // JWT 
     }
   }
 
@@ -19,7 +19,7 @@ const SigninForm = () => {
         <Form onSubmit={signInHandler}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
-            <Form.Control {...email} />
+            <Form.Control {...email}  />
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text>
@@ -27,7 +27,7 @@ const SigninForm = () => {
     
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control {...pass} />
+            <Form.Control {...pass}  />
           </Form.Group>
           <Button variant="primary" type="submit">
             Submit
