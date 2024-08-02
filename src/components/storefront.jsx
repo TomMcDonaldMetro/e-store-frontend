@@ -71,7 +71,6 @@ const dissectId = href => {
 
     return (
         <div id='content'>
-            <h1>Hello, World</h1>
             <h2>Let's create a book store front page...</h2>
             <Books />
         </div>

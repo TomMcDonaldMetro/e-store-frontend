@@ -12,8 +12,8 @@ const Book = ({handler, book, message}) => {
    return (
     <Card bg="secondary" style={{ width: '18rem' }}>
       <Card.Img variant="top" src={`${baseUrl}${imgTitle}.png`} alt="book_image"/>
-        <Card.Body>
-          <Link to={`/books/${book.id}`}><Card.Title>{book.title}</Card.Title> </Link>
+        <Card.Body >
+          <Link to={`/books/${book.id}`}><Card.Title style={{overflow: "hidden"}}>{book.title}</Card.Title> </Link>
         </Card.Body>
         <Card.Text>
           ${book.price}
