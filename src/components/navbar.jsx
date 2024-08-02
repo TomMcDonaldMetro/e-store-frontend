@@ -5,17 +5,20 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import ShoppingCartButton from './cartbutton'
+import DropdownShopping from './DropdownShopping';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { removeFilter, setFilter } from '../reducers/filterReducer';
+import { Dropdown } from 'react-bootstrap';
+
 const StoreHeader = () => {
+const navigate = useNavigate()
 
 const [search, setSearch] = useState('')
 const dispatch = useDispatch()
 
-  const navigate = useNavigate()
 
   const books = useSelector(state => state.books)
   // set a search state variable by the nav bar search input
@@ -79,9 +82,11 @@ const dispatch = useDispatch()
 			  <Navbar.Text>
 			  	<Link to='/signin'><Button variant="dark">Sign In</Button></Link>
          	 </Navbar.Text>
-			 <Navbar.Text>
-			 	<Link to='/checkout'><ShoppingCartButton/></Link>
-			 </Navbar.Text>
+			  
+
+			  <DropdownShopping />
+
+			 
 			</Navbar.Collapse>
 			
 		  </Container>

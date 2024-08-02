@@ -27,6 +27,15 @@ const dissectId = href => {
     const filter = useSelector(state => state.filter)
     let filteredBooks = undefined
 
+    // if the server is off or something prevents books from appearing.
+    if(books.length === 0){
+      return (
+        <div>
+          No results... Please refresh or try again later.
+        </div>
+      )
+    }
+
     if(filter){
       filteredBooks = books.filter(book => book.title.toLowerCase().includes(filter))
       
@@ -57,6 +66,9 @@ const dissectId = href => {
     )
     
   }
+
+  
+
     return (
         <div id='content'>
             <h1>Hello, World</h1>

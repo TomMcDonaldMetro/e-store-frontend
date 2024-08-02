@@ -9,12 +9,12 @@ const ShoppingCartButton = () =>{
   const cart = useSelector(state => state.cart)
   return (
     
-    <div>
-      <Cart   />
+    <a>
+      <Cart  style={{color: "white"}} />
       <span className="badge text-bg-danger">
         {cart.length}
       </span>
-    </div>
+    </a>
     
   );
 }
